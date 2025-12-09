@@ -51,6 +51,17 @@ const postFighter = async (
   }
 };
 
+const updateFighter = async (fighter: IFighter): Promise<boolean> => {
+  try {
+    await axios.put(endpoint, fighter)
+    return true;
+  } catch (error) {
+    console.log("Error", error)
+
+    return false;
+  }
+}
+
 const deleteFighter = async (fighter: IFighter): Promise<boolean> => {
   try {
     await axios.delete(`${endpoint}/${fighter.id}`);
@@ -64,7 +75,8 @@ const deleteFighter = async (fighter: IFighter): Promise<boolean> => {
 const FighterService = {
   getAllFighters,
   postFighter,
-  deleteFighter
+  deleteFighter,
+  updateFighter
 };
 
 export default FighterService;
